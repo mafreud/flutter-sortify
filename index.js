@@ -31,7 +31,7 @@ async function format(workingDirectory) {
     }
   };
 
-
+  await exec.exec('flutter pub run get');
   const result = await exec.exec('flutter pub run import_sorter:main -e');
   
 
