@@ -1,13 +1,5 @@
-name: "Hello Worldのサンプル"
-description: "Greet someone and record the time"
-inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
-    required: true
-    default: "World"
-outputs:
-  time: # id of output
-    description: "The time we greeted you"
+name: "flutter-sortify"
+description: "Flutterプロジェクトのimportを整理します"
 runs:
   using: "node16"
   main: "index.js"
