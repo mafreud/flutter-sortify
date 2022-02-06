@@ -16,7 +16,7 @@ async function format() {
   let myOutput = '';
 let myError = '';
 
-const options = {};
+const options = { cwd: process.env.GITHUB_WORKSPACE };
 options.listeners = {
   stdout: (data) => {
     myOutput += data.toString();
