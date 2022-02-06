@@ -9,7 +9,7 @@ jobs:
         id: hello
         uses: mafreud/flutter-sortify@v0.1.13
         with:
-          who-to-greet: "Aoki!"
+          who-to-greet: "mafreud"
       # Use the output from the `hello` step
       # - name: Get the output time
       #   run: echo "The time was ${{ steps.hello.outputs.idOfOutputs }}"
