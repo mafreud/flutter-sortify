@@ -29,7 +29,9 @@ async function format(workingDirectory) {
   };
   await exec.exec('flutter analyze');
   await exec.exec('pub run import_sorter:main -e');
-  await exec.exec('git add .')
+  await exec.exec('git add .');
+  await exec.exec('git commit -m \'Sortify!\'');
+  await exec.exec('git status');
   
   return;
 }
