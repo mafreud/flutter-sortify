@@ -24,7 +24,7 @@ async function installImportSorter(workingDirectory){
       output += data.toString();
     }
   };
-  const args = ['pub deps | grep import_sorter'];
+  const args = ['deps | grep import_sorter'];
   await exec.exec('pub', args, options);
   const result = output.includes('import_sorter');
   if(result){
