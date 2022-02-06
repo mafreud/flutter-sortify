@@ -50,7 +50,6 @@ async function format(workingDirectory) {
   await exec.exec('git',args,options);
   const result = output.includes('nothing to commit, working tree clean');
   if(result){
-    console.log('nothing to commit');
     return;
   }
   await exec.exec('git add .');
@@ -58,7 +57,7 @@ async function format(workingDirectory) {
   await exec.exec('git config --global user.name \'flutter-sortify\'');
   await exec.exec('git commit -m \'Sortify!\'');
   await exec.exec(`git push origin ${process.env.GITHUB_REF_NAME}`);
-  return
+  return;
 }
 
 run();
