@@ -25,7 +25,6 @@ options.listeners = {
     myError += data.toString();
   }
 };
-options.cwd = './lib';
 
   await exec.exec('flutter analyze', options);
   console.log(myOutput);
