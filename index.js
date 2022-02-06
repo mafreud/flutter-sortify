@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-// 1. 変更内容をコミット
+// 1. ブランチ名のハードコーディングを修正
+
 
 async function run() {
   try {
@@ -13,8 +14,7 @@ async function run() {
 async function format() {
   await exec.exec('flutter analyze');
   await exec.exec('pub run import_sorter:main -e');
-  const branchName = await exec.exec('git branch --show-current');
-  console.log(branchName);
+  console.log(process.env.GITHUB_REF_NAME);
   await exec.exec('git add .');
   await exec.exec('git config --global user.email \'freud427@gmail.com\'');
   await exec.exec('git config --global user.name \'flutter-sortify\'');
