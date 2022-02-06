@@ -16,7 +16,8 @@ async function format() {
   let myOutput = '';
 let myError = '';
 
-const options = { cwd: process.env.GITHUB_WORKSPACE };
+const workingDirectory = path.resolve(process.env.GITHUB_WORKSPACE, core.getInput('working-directory'))
+const options = { cwd: workingDirectory };
 options.listeners = {
   stdout: (data) => {
     myOutput += data.toString();
