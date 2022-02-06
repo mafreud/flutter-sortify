@@ -1,5 +1,7 @@
 name: "flutter-sortify"
 description: "Flutterプロジェクトのimportを整理します"
+icon: align-justify
+color: orange
 runs:
   using: "node16"
   main: "index.js"
