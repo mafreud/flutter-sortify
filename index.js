@@ -30,6 +30,8 @@ async function format(workingDirectory) {
       output += data.toString();
     }
   };
+  await exec.exec('pwd');
+  await exec.exec('ls');
   console.log('flutter pub get');
   await exec.exec('flutter pub run get');
   console.log('sort imports');
