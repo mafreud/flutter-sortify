@@ -3,8 +3,19 @@ const github = require('@actions/github');
 
 // 1. async - awaitを使えるようにする
 
-async function hello() {
-  return await Promise.resolve("Hello");
-};
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
 
-hello();
+async function asyncCall() {
+  console.log('calling');
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+  // expected output: "resolved"
+}
+
+asyncCall();
