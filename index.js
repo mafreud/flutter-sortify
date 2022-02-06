@@ -2,6 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
+  const workingDirectory = path.resolve(process.env.GITHUB_WORKSPACE, core.getInput('working-directory'))
+  console.log(workingDirectory);
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello!! ${nameToGreet}!`);
