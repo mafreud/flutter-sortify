@@ -3,15 +3,12 @@ const exec = require('@actions/exec');
 const fs = require('fs');
 const path = require('path');
 
-// 1. async - awaitを使えるようにする
-// 2. Cultyaでも動くか確認
-// 3. flutter analyzeを実行
+// 1. 変更内容をコミット
 
 async function run() {
   try {
     const workingDirectory = path.resolve(process.env.GITHUB_WORKSPACE, core.getInput('working-directory'))
-    const result = await format(workingDirectory);
-    console.log(result);
+    await format(workingDirectory);
 
   } catch (error) {
     core.setFailed(error.message);
@@ -30,14 +27,11 @@ async function format(workingDirectory) {
       output += data.toString();
     }
   };
-  await exec.exec('pwd');
-  await exec.exec('ls');
   await exec.exec('flutter analyze');
-  await exec.exec('flutter doctor -v');
-  const result = await exec.exec('pub run import_sorter:main -e');
+  await exec.exec('pub run import_sorter:main -e');
+  await exec.exec('git add .')
   
-
-  return result;
+  return;
 }
 
 run();
