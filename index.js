@@ -24,8 +24,8 @@ async function installImportSorter(workingDirectory){
       output += data.toString();
     }
   };
-  const args = ['pub deps'];
-  await exec.exec('flutter', args, options);
+  const args = ['deps'];
+  await exec.exec('pub', args, options);
   const result = output.includes('import_sorter');
   if(result){
     console.log('import_sorter is already installed');
