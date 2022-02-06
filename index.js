@@ -32,9 +32,7 @@ async function format(workingDirectory) {
   };
   await exec.exec('pwd');
   await exec.exec('ls');
-  console.log('flutter pub get');
-  await exec.exec('flutter pub run get');
-  console.log('sort imports');
+  // await exec.exec('flutter pub run get');
   const result = await exec.exec('pub run import_sorter:main -e');
   
 
