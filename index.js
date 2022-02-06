@@ -1,7 +1,8 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-// 1. ブランチ名のハードコーディングを修正
+const path = require('path');
 
+// 1. 実行結果のアウトプットを取得したい
 
 async function run() {
   try {
