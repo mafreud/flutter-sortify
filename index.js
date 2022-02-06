@@ -13,7 +13,7 @@ async function run() {
 async function format() {
   await exec.exec('flutter analyze');
   await exec.exec('pub run import_sorter:main -e');
-  const branchName = await exec.exec('git branch');
+  const branchName = await exec.exec('git branch --show-current');
   console.log(branchName);
   await exec.exec('git add .');
   await exec.exec('git config --global user.email \'freud427@gmail.com\'');
