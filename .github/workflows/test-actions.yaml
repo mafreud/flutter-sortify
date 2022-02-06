@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: mafreud/flutter-sortify@v0.1.8
+        uses: mafreud/flutter-sortify@v0.1.9
         with:
           who-to-greet: "Aoki"
       # Use the output from the `hello` step
