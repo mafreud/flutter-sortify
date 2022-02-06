@@ -37,7 +37,7 @@ let myError = '';
 
   console.log(`myOutput: ${myOutput}`);
   console.log(`myError: ${myError}`);
-  console.log(result, myOutput.includes('nothing to commit, working tree clean'));
+  console.log('result', myOutput.includes('nothing to commit, working tree clean'));
   // await exec.exec('git add .');
   // await exec.exec('git config --global user.email \'freud427@gmail.com\'');
   // await exec.exec('git config --global user.name \'flutter-sortify\'');
