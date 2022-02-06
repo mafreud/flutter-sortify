@@ -13,13 +13,13 @@ async function run() {
 
 async function format() {
   await exec.exec('flutter analyze');
-  await exec.exec('pub run import_sorter:main -e');
-  console.log(process.env.GITHUB_REF_NAME);
+  const result = await exec.exec('pub run import_sorter:main -e');
+  console.log(`result: ${result}`);
   await exec.exec('git add .');
   await exec.exec('git config --global user.email \'freud427@gmail.com\'');
   await exec.exec('git config --global user.name \'flutter-sortify\'');
-  await exec.exec('git commit -m \'Sortify!\'');
-  await exec.exec('git push origin actions-test');
+  await exec.exec('git commit -m \'Sortify imports!\'');
+  await exec.exec(`git push origin ${process.env.GITHUB_REF_NAME}`);
   return
 }
 
