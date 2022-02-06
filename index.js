@@ -16,20 +16,23 @@ async function format() {
   const workingDirectory = path.resolve(process.env.GITHUB_WORKSPACE, core.getInput('working-directory'))
 
 
-  let output = '';
+  let myOutput = '';
+let myError = '';
 
   const options = { cwd: workingDirectory };
   options.listeners = {
     stdout: (data) => {
-      output += data.toString();
+      myOutput += data.toString();
     },
     stderr: (data) => {
-      output += data.toString();
+      myError += data.toString();
     }
   };
   const args = ['analyze']
   await exec.exec('flutter', args, options);
-  console.log(output);
+  console.log(`myOutput: ${myOutput}`);
+  console.log(`myError: ${myError}`);
+
   // await exec.exec('pub run import_sorter:main -e');
   // await exec.exec('git add .');
   // await exec.exec('git config --global user.email \'freud427@gmail.com\'');
