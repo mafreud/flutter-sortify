@@ -28,12 +28,16 @@ let myError = '';
       myError += data.toString();
     }
   };
-  const args = ['analyze']
-  await exec.exec('flutter', args, options);
-  console.log(`myOutput: ${myOutput}`);
-  console.log(`myError: ${myError}`);
+  const args = ['status'];
+  // await exec.exec('flutter analyze');
+  
 
   // await exec.exec('pub run import_sorter:main -e');
+  await exec.exec('git',args,options);
+
+  console.log(`myOutput: ${myOutput}`);
+  console.log(`myError: ${myError}`);
+  console.log(result, myOutput.includes('nothing to commit, working tree clean'));
   // await exec.exec('git add .');
   // await exec.exec('git config --global user.email \'freud427@gmail.com\'');
   // await exec.exec('git config --global user.name \'flutter-sortify\'');
