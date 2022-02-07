@@ -52,11 +52,21 @@ async function format(workingDirectory) {
   if(result){
     return;
   }
+  let branchName = '';
+  const triggerEvent = process.env.GITHUB_EVENT_NAME;
+  console.log('triggerEvent',triggerEvent );
+  if(GITHUB_EVENT_NAME==='push'){
+    branchName = process.env.GITHUB_REF_NAME;
+  }
+  if(GITHUB_EVENT_NAME==='pull request'){
+    branchName = process.env.GITHUB_HEAD_REF;
+  }
+
   await exec.exec('git add .');
   await exec.exec('git config --global user.email \'freud427@gmail.com\'');
   await exec.exec('git config --global user.name \'flutter-sortify\'');
   await exec.exec('git commit -m \'Sortify!\'');
-  await exec.exec(`git push origin ${process.env.GITHUB_REF_NAME}`);
+  await exec.exec(`git push origin ${branchName}`);
   return;
 }
 
