@@ -54,11 +54,11 @@ async function format(workingDirectory) {
   }
   let branchName = '';
   const triggerEvent = process.env.GITHUB_EVENT_NAME;
-  console.log('triggerEvent',triggerEvent );
-  if(GITHUB_EVENT_NAME==='push'){
+  console.log('triggerEvent',triggerEvent);
+  if(triggerEvent==='push'){
     branchName = process.env.GITHUB_REF_NAME;
   }
-  if(GITHUB_EVENT_NAME==='pull request'){
+  if(triggerEvent==='pull_request'){
     branchName = process.env.GITHUB_HEAD_REF;
   }
 
