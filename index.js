@@ -7,6 +7,7 @@ async function run() {
   try {
     await exec.exec('flutter pub get');
     await installImportSorter(workingDirectory);
+    await dartFix();
     await format(workingDirectory);
   } catch (error) {
     core.setFailed(error.message);
@@ -32,6 +33,11 @@ async function installImportSorter(workingDirectory){
   } else{
     await exec.exec('flutter pub add import_sorter');
   }
+}
+
+async function dartFix() {
+  await exec.exec('dart fix --dry-run');
+  await exec.exec('dart fix --apply');
 }
 
 async function format(workingDirectory) {
