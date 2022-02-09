@@ -5,7 +5,7 @@ const path = require('path');
 async function run() {
   const workingDirectory = path.resolve(process.env.GITHUB_WORKSPACE, core.getInput('working-directory'))
   try {
-    await exec.exec('flutter analyze');
+    await exec.exec('flutter pub get');
     await installImportSorter(workingDirectory);
     await format(workingDirectory);
   } catch (error) {
