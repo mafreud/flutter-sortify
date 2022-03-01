@@ -7,9 +7,7 @@ async function run() {
   try {
     await exec.exec('flutter pub get');
     await installImportSorter(workingDirectory);
-    await toBeta();
     await dartFix();
-    await toStable();
     await format(workingDirectory);
   } catch (error) {
     core.setFailed(error.message);
@@ -37,18 +35,7 @@ async function installImportSorter(workingDirectory){
   }
 }
 
-async function toBeta(){
-  await exec.exec('flutter channel beta');
-  await exec.exec('flutter upgrade');
-}
-
-async function toStable(){
-  await exec.exec('flutter channel stable');
-  await exec.exec('flutter upgrade');
-}
-
 async function dartFix() {
-  await exec.exec('dart fix --dry-run');
   await exec.exec('dart fix --apply');
 }
 
